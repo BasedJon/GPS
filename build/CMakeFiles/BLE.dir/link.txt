@@ -1,3 +1,0 @@
-"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\BLE.dir/objects.a
-C:\msys64\mingw64\bin\ar.exe qc CMakeFiles\BLE.dir/objects.a @CMakeFiles\BLE.dir\objects1.rsp
-C:\msys64\mingw64\bin\g++.exe  -g -O0 -g -Wl,--whole-archive CMakeFiles\BLE.dir/objects.a -Wl,--no-whole-archive -o BLE.exe -Wl,--out-implib,libBLE.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\BLE.dir\linkLibs.rsp
