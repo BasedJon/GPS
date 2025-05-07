@@ -404,17 +404,43 @@ float STD3D_vec4_clip_plane_distance(const vec4 &v, uint8_t plane_index) {
 }
 
 // CLIP TRAIANGLE
-void STD3D_test(const vec4 &v1, const vec4 &v2, const vec4 &v3, uint8_t plane_index) {
-    std::vector<vec4> triangle = {v1, v2, v3};
-    triangle.push_back(v1);
+std::vector<vec4> STD3D_test(const vec4 &v1, const vec4 &v2, const vec4 &v3, uint8_t plane_index) {
+    std::vector<vec4> polygon_to_clip = {v1, v2, v3};
+    std::vector<vec4> polygon_output(3);
+
+    polygon_to_clip.push_back(v1);
     vec4 v1_temp, v2_temp;
-    bool v1_in_or_out, v2_in_or_out;
+    float v1_in_or_out_f_value, v2_in_or_out_f_value, interpolation_factor;
+    bool v1_in_or_out_bool_value, v2_in_or_out_bool_value;
+
 
     for (uint32_t i = 0; i < 3; i++) {
-        v1_temp = triangle[i];
-        v2_temp = triangle[(i + 1) % 3];
-        v1_in_or_out = (STD3D_vec4_clip_plane_distance(v1_temp, plane_index) >= 0.0f);
-        v2_in_or_out = (STD3D_vec4_clip_plane_distance(v2_temp, plane_index) >= 0.0f);
+        v1_temp = polygon_to_clip[i];
+        v2_temp = polygon_to_clip[(i + 1) % 3];
+        v1_in_or_out_f_value = STD3D_vec4_clip_plane_distance(v1_temp, plane_index);
+        v2_in_or_out_f_value = STD3D_vec4_clip_plane_distance(v2_temp, plane_index);
+        interpolation_factor = v1_in_or_out_f_value / (v1_in_or_out_f_value - v2_in_or_out_f_value);
+        v1_in_or_out_bool_value = v1_in_or_out_f_value >= 0.0f;
+        v2_in_or_out_bool_value = v2_in_or_out_f_value >= 0.0f;
+
+
+        if (v1_in_or_out_bool_value && v2_in_or_out_bool_value) {
+            polygon_output.push_back(v2_temp);
+        }
         
+        else if (!v1_in_or_out_bool_value && !v2_in_or_out_bool_value) {
+            continue;
+        }
+
+        else if (v1_in_or_out_bool_value && !v2_in_or_out_bool_value) {
+            polygon_output.push_back(STD3D_vec4_interpolate(v1_temp, v2_temp, interpolation_factor));
+        }
+
+        else if (!v1_in_or_out_bool_value && v2_in_or_out_bool_value) {
+            polygon_output.push_back(STD3D_vec4_interpolate(v1_temp, v2_temp, interpolation_factor));
+            polygon_output.push_back(v2_temp);
+        }
     }
+
+    return polygon_output;
 }

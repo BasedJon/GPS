@@ -13,9 +13,6 @@
 #define FMT_HEADER_ONLY
 #include <fmt/core.h>
 
-// GLM
-#include <glm/glm.hpp>
-
 // PRIMITIVE TYPES
 struct vec2 {
     float x, y;
