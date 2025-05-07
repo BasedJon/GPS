@@ -1,0 +1,26 @@
+
+# Consider dependencies only in project.
+set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
+
+# The set of languages for which implicit dependencies are needed:
+set(CMAKE_DEPENDS_LANGUAGES
+  )
+
+# The set of dependency files which are needed:
+set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "C:/coding/projects/GPS/src/GPS.cpp" "CMakeFiles/BLE.dir/src/GPS.cpp.obj" "gcc" "CMakeFiles/BLE.dir/src/GPS.cpp.obj.d"
+  "C:/coding/projects/GPS/src/GPS_SDL_INIT.cpp" "CMakeFiles/BLE.dir/src/GPS_SDL_INIT.cpp.obj" "gcc" "CMakeFiles/BLE.dir/src/GPS_SDL_INIT.cpp.obj.d"
+  "C:/coding/projects/GPS/src/STD3D.cpp" "CMakeFiles/BLE.dir/src/STD3D.cpp.obj" "gcc" "CMakeFiles/BLE.dir/src/STD3D.cpp.obj.d"
+  "C:/coding/projects/GPS/src/main.cpp" "CMakeFiles/BLE.dir/src/main.cpp.obj" "gcc" "CMakeFiles/BLE.dir/src/main.cpp.obj.d"
+  )
+
+# Targets to which this target links which contain Fortran sources.
+set(CMAKE_Fortran_TARGET_LINKED_INFO_FILES
+  )
+
+# Targets to which this target links which contain Fortran sources.
+set(CMAKE_Fortran_TARGET_FORWARD_LINKED_INFO_FILES
+  )
+
+# Fortran module output directory.
+set(CMAKE_Fortran_TARGET_MODULE_DIR "")

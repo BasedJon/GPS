@@ -5,9 +5,6 @@
 
 // INCLUDE SDL3
 #include <SDL3/SDL.h>
-#include <SDL3_image/SDL_image.h>
-#include <SDL3_ttf/SDL_ttf.h>
-
 
 // SDL VARS
 extern SDL_Event GPS_SDL_EVENT;
